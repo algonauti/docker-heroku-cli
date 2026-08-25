@@ -1,16 +1,17 @@
-# Alpine Heroku CLI
+# Debian Heroku CLI
 
-This image packages the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) inside an Alpine Linux based Docker container. The version will track that of the Heroku CLI.
+This image packages the current [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) in a Debian Trixie slim container. The CLI is installed with Heroku's official installer when the image is built.
 
 ## Usage
 
-The easiest way to use this would be to use your Heroku [API key](https://dashboard.heroku.com/account) or an [OAuth authorization token](https://github.com/heroku/heroku-cli-oauth#authorizations) set as the `HEROKU_API_KEY` environment variable.
-
+Run Heroku CLI commands by invoking `heroku` after the image name:
 
 ```bash
-docker run --rm algonauti/heroku-cli version
-# heroku/7.47.3 linux-x64 node-v14.15.1
+docker run --rm algonauti/heroku-cli heroku version
+```
 
-# API key/OAuth token method
-docker run --rm  -e HEROKU_API_KEY="api123" algonauti/heroku-cli list
+Authenticate non-interactively with a Heroku [API key](https://dashboard.heroku.com/account) or [OAuth authorization token](https://github.com/heroku/heroku-cli-oauth#authorizations) in `HEROKU_API_KEY`:
+
+```bash
+docker run --rm -e HEROKU_API_KEY="api123" algonauti/heroku-cli heroku list
 ```
